@@ -23,6 +23,9 @@ function App(props: RouteComponentProps) {
   const [position, setPosition] = useState<IPosition | null>(null);
   const [input, setInput] = useState("");
   const [cities, setCities] = useState<ICities | null>(null);
+  const [background, setBackground] = useState<string>(
+    `url("https://media.giphy.com/media/KzqJsfsd78wLe/giphy.gif")`
+  );
 
   useEffect(() => {
     getLocation();
@@ -34,6 +37,26 @@ function App(props: RouteComponentProps) {
       getWeather(position.lat, position.lng);
     }
   }, [position]);
+
+  useEffect(() => {
+    if (weather) {
+      if (weather.current.weather[0].main === "Clear") {
+        setBackground(
+          `url("https://media.giphy.com/media/KzqJsfsd78wLe/giphy.gif")`
+        );
+      }
+      if (weather.current.weather[0].main === "Clouds") {
+        setBackground(
+          `url("https://images-cdn.9gag.com/photo/awXXwg4_700b.jpg")`
+        );
+      }
+      if (weather.current.weather[0].main === "Snow") {
+        setBackground(
+          `url("http://38.media.tumblr.com/3cee14c9daf7f3f8202298bdc11a00f8/tumblr_mqfly2Tevf1suxe4jo1_500.gif")`
+        );
+      }
+    }
+  }, [weather]);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -130,13 +153,12 @@ function App(props: RouteComponentProps) {
 
   return (
     <div
-      className="homeBackground"
       style={{
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        backgroundImage:
-          'url("https://media.giphy.com/media/KzqJsfsd78wLe/giphy.gif")',
+        backgroundImage: `${background}`,
         position: "relative",
+        height: "140vh",
       }}
     >
       <Route

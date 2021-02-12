@@ -20,6 +20,10 @@ export default function ForecastDays(props: IForecastDaysProps) {
                     <p className="monthDateFont">
                       {month} {date}
                     </p>
+                    <img
+                      alt="weatherIcon"
+                      src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    />
                     <p className="monthDateFont">{day.weather[0].main}</p>
                   </strong>
                 </Col>

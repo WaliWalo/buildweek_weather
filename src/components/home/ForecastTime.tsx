@@ -16,6 +16,10 @@ export default function ForecastTime(props: IForecastTimeProps) {
                 return (
                   <div>
                     <p>{hourTxt}</p> <p>{hour.weather[0].main}</p>
+                    <img
+                      alt="weatherIcon"
+                      src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`}
+                    />
                     <p>{hour.temp} °C</p>
                   </div>
                 );
