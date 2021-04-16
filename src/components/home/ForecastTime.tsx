@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { IForecastTimeProps } from "../../types";
 import { convertUnix } from "../../utils/util";
 import "./forecastTime.css";

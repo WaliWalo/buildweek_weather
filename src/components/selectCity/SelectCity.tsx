@@ -24,6 +24,9 @@ export default function SelectCity(props: ISelectCityProps) {
                 <Col>
                   <p>{city.timezone}</p>
                 </Col>
+                <Col>
+                  <Button variant="danger">Remove</Button>
+                </Col>
               </Row>
             </ListGroup.Item>
           ))}
